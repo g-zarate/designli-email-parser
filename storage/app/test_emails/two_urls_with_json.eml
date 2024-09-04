@@ -1,0 +1,24 @@
+MIME-Version: 1.0
+Date: Wed, 4 Sep 2024 13:07:35 -0600
+Message-ID: <CAEBtEP7uoZ7Oov0t9ks=7VGHArEbth0RbQjsvmAcYApxbpGBMg@mail.gmail.com>
+Subject: two_urls_with_json
+From: =?UTF-8?Q?Gerardo_Z=C3=A1rate?= <gerardo.zarate.m@gmail.com>
+To: =?UTF-8?Q?Gerardo_Z=C3=A1rate?= <gerardo.zarate.m@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000008e50006214fe3cc"
+
+--00000000000008e50006214fe3cc
+Content-Type: text/plain; charset="UTF-8"
+
+https://jsonplaceholder.typicode.com/comments
+https://api.github.com/users/hadley/orgs
+
+--00000000000008e50006214fe3cc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><a href=3D"https://jsonplaceholder.typicode.com/comments" =
+target=3D"_blank">https://jsonplaceholder.typicode.com/comments</a><br><div=
+><a href=3D"https://api.github.com/users/hadley/orgs" target=3D"_blank">htt=
+ps://api.github.com/users/hadley/orgs</a></div></div>
+
+--00000000000008e50006214fe3cc--

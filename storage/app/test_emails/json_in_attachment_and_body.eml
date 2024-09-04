@@ -1,0 +1,87 @@
+MIME-Version: 1.0
+Date: Wed, 4 Sep 2024 13:06:02 -0600
+Message-ID: <CAEBtEP4n5+wSrSnnRJXWyCzxhasvERG1pD6kuhmFXhNVLHT6xw@mail.gmail.com>
+Subject: json_in_attachment_and_body
+From: =?UTF-8?Q?Gerardo_Z=C3=A1rate?= <gerardo.zarate.m@gmail.com>
+To: =?UTF-8?Q?Gerardo_Z=C3=A1rate?= <gerardo.zarate.m@gmail.com>
+Content-Type: multipart/mixed; boundary="000000000000824c5f06214fdd3a"
+
+--000000000000824c5f06214fdd3a
+Content-Type: multipart/alternative; boundary="000000000000824c5c06214fdd38"
+
+--000000000000824c5c06214fdd38
+Content-Type: text/plain; charset="UTF-8"
+
+{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to
+create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}
+
+--000000000000824c5c06214fdd38
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr"><pre style="color:rgb(0,0,0)">{
+    &quot;glossary&quot;: {
+        &quot;title&quot;: &quot;example glossary&quot;,
+		&quot;GlossDiv&quot;: {
+            &quot;title&quot;: &quot;S&quot;,
+			&quot;GlossList&quot;: {
+                &quot;GlossEntry&quot;: {
+                    &quot;ID&quot;: &quot;SGML&quot;,
+					&quot;SortAs&quot;: &quot;SGML&quot;,
+					&quot;GlossTerm&quot;: &quot;Standard Generalized Markup Language&quot;,
+					&quot;Acronym&quot;: &quot;SGML&quot;,
+					&quot;Abbrev&quot;: &quot;ISO 8879:1986&quot;,
+					&quot;GlossDef&quot;: {
+                        &quot;para&quot;: &quot;A meta-markup language, used to create markup languages such as DocBook.&quot;,
+						&quot;GlossSeeAlso&quot;: [&quot;GML&quot;, &quot;XML&quot;]
+                    },
+					&quot;GlossSee&quot;: &quot;markup&quot;
+                }
+            }
+        }
+    }
+}</pre></div>
+
+--000000000000824c5c06214fdd38--
+--000000000000824c5f06214fdd3a
+Content-Type: application/json; name="json1.json"
+Content-Disposition: attachment; filename="json1.json"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_m0o8b8qx0
+Content-ID: <f_m0o8b8qx0>
+
+ewogICAgImdsb3NzYXJ5IjogewogICAgICAgICJ0aXRsZSI6ICJleGFtcGxlIGdsb3NzYXJ5IiwK
+ICAgICAgICAiR2xvc3NEaXYiOiB7CiAgICAgICAgICAgICJ0aXRsZSI6ICJTIiwKICAgICAgICAg
+ICAgIkdsb3NzTGlzdCI6IHsKICAgICAgICAgICAgICAgICJHbG9zc0VudHJ5IjogewogICAgICAg
+ICAgICAgICAgICAgICJJRCI6ICJTR01MIiwKICAgICAgICAgICAgICAgICAgICAiU29ydEFzIjog
+IlNHTUwiLAogICAgICAgICAgICAgICAgICAgICJHbG9zc1Rlcm0iOiAiU3RhbmRhcmQgR2VuZXJh
+bGl6ZWQgTWFya3VwIExhbmd1YWdlIiwKICAgICAgICAgICAgICAgICAgICAiQWNyb255bSI6ICJT
+R01MIiwKICAgICAgICAgICAgICAgICAgICAiQWJicmV2IjogIklTTyA4ODc5OjE5ODYiLAogICAg
+ICAgICAgICAgICAgICAgICJHbG9zc0RlZiI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgInBh
+cmEiOiAiQSBtZXRhLW1hcmt1cCBsYW5ndWFnZSwgdXNlZCB0byBjcmVhdGUgbWFya3VwIGxhbmd1
+YWdlcyBzdWNoIGFzIERvY0Jvb2suIiwKICAgICAgICAgICAgICAgICAgICAgICAgIkdsb3NzU2Vl
+QWxzbyI6IFsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJHTUwiLAogICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIlhNTCIKICAgICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAg
+ICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgIkdsb3NzU2VlIjogIm1hcmt1cCIKICAg
+ICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQ==
+--000000000000824c5f06214fdd3a--
