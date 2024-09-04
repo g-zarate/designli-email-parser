@@ -65,11 +65,8 @@ php artisan migrate
 
 Build the Docker image using the provided Dockerfile
 ```
-docker build -t your-project-name .
+docker-compose up -d --build
 ```
-Start the container
-```
-docker run -d -p 8000:8000 designli-email-parser
-```
+
 
 The application should now be accessible at http://localhost:8000
