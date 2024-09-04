@@ -12,7 +12,6 @@ class EmailParserController extends Controller
 {
     public function parseEmail(Request $request, FileStorageService $fileStorageService, EmailParserService $emailParserService): JsonResponse
     {
-
         $rules = [
             'email_file' => 'required|file',
         ];
@@ -27,7 +26,6 @@ class EmailParserController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         }
-
         $filePath = $fileStorageService->uploadFile($request->file('email_file'));
         $data = $emailParserService->parseEmail($filePath);
 
