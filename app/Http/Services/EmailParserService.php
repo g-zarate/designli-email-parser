@@ -9,16 +9,20 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class EmailParserService
 {
-    public function parseEmail(string $filePath): ?array
+    public function parseEmail(string $filePath, bool $useStorage): ?array
     {
         $parser = new Parser();
-        $parser->setPath(storage_path('app/' . $filePath));
+        if ($useStorage) {
+            $parser->setPath(storage_path('app/' . $filePath));
+        } else {
+            $parser->setPath($filePath);
+        }
 
         $contentFromAttachments = $this->getJsonFromAttachments($parser);
         if ($contentFromAttachments ) {
             $attachmentJson = $this->processValidateJsonData($this->getJsonFromAttachments($parser));
         }
-        
+
         $textBody = $this->processValidateJsonData($parser->getMessageBody('text'));
 
         $urls = $this->extractUrls($parser->getMessageBody('text'));
@@ -27,16 +31,13 @@ class EmailParserService
             if ($jsonFromUrls) {
                 $jsonContentFromUrls = $this->processValidateJsonData($jsonFromUrls);
             }
-            
         }
 
         return [
             'attachment' => $attachmentJson ?? "No valid json attachment found",
             'text_body' => $textBody ?? "No valid json found in body",
             'urls' => $jsonContentFromUrls ?? "no json found"
-            
         ];
-        
     }
 
     private function getJsonFromAttachments(Parser $parser): ?string
@@ -44,7 +45,6 @@ class EmailParserService
         $attachments = $parser->getAttachments();
 
         foreach ($attachments as $attachment) {
-            
             if ($attachment->getContentType() === 'application/json') {
                 return $attachment->getContent();
             }
@@ -63,7 +63,6 @@ class EmailParserService
     public function fetchJsonFromUrls(array $urls): ?string
     {
         $jsonData = [];
-        
         foreach ($urls as $url) {
             $response = Http::get($url);
             if ($response->successful()) {
@@ -106,7 +105,6 @@ class EmailParserService
         $crawler = new Crawler($html);
         $jsonLinks = [];
 
-        // Extract all links from the page
         $crawler->filter('a')->each(function (Crawler $node) use (&$jsonLinks, $baseUrl) {
             $href = $node->attr('href');
             $absoluteUrl = $this->toAbsoluteUrl($href, $baseUrl);
@@ -114,7 +112,6 @@ class EmailParserService
                 $jsonLinks[] = $absoluteUrl;
             }
         });
-
         return $jsonLinks;
     }
 
