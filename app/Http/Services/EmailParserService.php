@@ -6,6 +6,9 @@ use PhpMimeMailParser\Parser;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
+use App\Utils\JsonUtils;
+use App\Utils\UrlUtils;
+
 
 class EmailParserService
 {
@@ -25,7 +28,7 @@ class EmailParserService
 
         $textBody = $this->processValidateJsonData($parser->getMessageBody('text'));
 
-        $urls = $this->extractUrls($parser->getMessageBody('text'));
+        $urls = UrlUtils::extractUrls($parser->getMessageBody('text'));
         if (!empty($urls)) {
             $jsonFromUrls = $this->fetchJsonFromUrls($urls);
             if ($jsonFromUrls) {
@@ -53,13 +56,6 @@ class EmailParserService
         return null;
     }
 
-    private function extractUrls(string $content): array
-    {
-        $pattern = '/https?:\/\/[^\s"]+/i';
-        preg_match_all($pattern, $content, $matches);
-        return $matches[0] ?? [];
-    }
-
     public function fetchJsonFromUrls(array $urls): ?string
     {
         $jsonData = [];
@@ -67,7 +63,7 @@ class EmailParserService
             $response = Http::get($url);
             if ($response->successful()) {
                 $body = $response->body();
-                if ($this->isJson($body)) {
+                if (JsonUtils::isJson($body)) {
                     $jsonData[] = $body;
                 } else {
                     $jsonLinks = $this->scrapeJsonLinksFromPage($body, $url);
@@ -75,7 +71,7 @@ class EmailParserService
                         $response = Http::get($link);
                         if ($response->successful()) {
                             $body = $response->body();
-                            if ($this->isJson($body)) {
+                            if (JsonUtils::isJson($body)) {
                                 $jsonData[] = $body;
                             }
                         }
@@ -107,39 +103,11 @@ class EmailParserService
 
         $crawler->filter('a')->each(function (Crawler $node) use (&$jsonLinks, $baseUrl) {
             $href = $node->attr('href');
-            $absoluteUrl = $this->toAbsoluteUrl($href, $baseUrl);
-            if ($this->isValidUrl($absoluteUrl)) {
+            $absoluteUrl = UrlUtils::toAbsoluteUrl($href, $baseUrl);
+            if (UrlUtils::isValidUrl($absoluteUrl)) {
                 $jsonLinks[] = $absoluteUrl;
             }
         });
         return $jsonLinks;
-    }
-
-    private function isJson(string $string): bool
-    {
-        json_decode($string);
-        return json_last_error() === JSON_ERROR_NONE;
-    }
-
-    private function isJsonLink(string $url): bool
-    {
-        return str_ends_with(parse_url($url, PHP_URL_PATH), '.json');
-    }
-
-    private function isValidUrl(string $href): bool
-    {
-        return filter_var($href, FILTER_VALIDATE_URL) !== false;
-    }
-
-    private function toAbsoluteUrl(string $url, string $baseUrl): string
-    {
-        if (filter_var($url, FILTER_VALIDATE_URL)) {
-            return $url;
-        }
-        $parsedBaseUrl = parse_url($baseUrl);
-        if (!isset($parsedBaseUrl['scheme']) || !isset($parsedBaseUrl['host'])) {
-            throw new InvalidArgumentException('Base URL must be valid.');
-        }
-        return rtrim($parsedBaseUrl['scheme'] . '://' . $parsedBaseUrl['host'], '/') . '/' . ltrim($url, '/');
     }
 }
