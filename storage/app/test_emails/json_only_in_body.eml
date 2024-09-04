@@ -1,0 +1,62 @@
+MIME-Version: 1.0
+Date: Wed, 4 Sep 2024 13:03:39 -0600
+Message-ID: <CAEBtEP5yzCo9JccWbwFZNHYJW3XYLNXrwAVKZBwvYrDQftX9Ug@mail.gmail.com>
+Subject: json_only_in_body
+From: =?UTF-8?Q?Gerardo_Z=C3=A1rate?= <gerardo.zarate.m@gmail.com>
+To: =?UTF-8?Q?Gerardo_Z=C3=A1rate?= <gerardo.zarate.m@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000005ed5b06214fd5a4"
+
+--00000000000005ed5b06214fd5a4
+Content-Type: text/plain; charset="UTF-8"
+
+{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to
+create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}
+
+--00000000000005ed5b06214fd5a4
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr"><pre style="color:rgb(0,0,0)">{
+    &quot;glossary&quot;: {
+        &quot;title&quot;: &quot;example glossary&quot;,
+		&quot;GlossDiv&quot;: {
+            &quot;title&quot;: &quot;S&quot;,
+			&quot;GlossList&quot;: {
+                &quot;GlossEntry&quot;: {
+                    &quot;ID&quot;: &quot;SGML&quot;,
+					&quot;SortAs&quot;: &quot;SGML&quot;,
+					&quot;GlossTerm&quot;: &quot;Standard Generalized Markup Language&quot;,
+					&quot;Acronym&quot;: &quot;SGML&quot;,
+					&quot;Abbrev&quot;: &quot;ISO 8879:1986&quot;,
+					&quot;GlossDef&quot;: {
+                        &quot;para&quot;: &quot;A meta-markup language, used to create markup languages such as DocBook.&quot;,
+						&quot;GlossSeeAlso&quot;: [&quot;GML&quot;, &quot;XML&quot;]
+                    },
+					&quot;GlossSee&quot;: &quot;markup&quot;
+                }
+            }
+        }
+    }
+}</pre></div>
+
+--00000000000005ed5b06214fd5a4--
